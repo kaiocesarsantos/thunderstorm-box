@@ -39,5 +39,12 @@ class Conta(object):
                 self.saldo,
                 self.limite)
 
+    def transferir_para(self, conta_destino: object, valor: float):
+        sacar = self.sacar(valor)
+        if not sacar:
+            return False
+
+        conta_destino.depositar(valor)
+
     def __str__(self):
         return self.numero
