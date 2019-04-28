@@ -6,7 +6,24 @@ conta_123 = Conta(
     numero='123-1',
     titular='Manuela',
     saldo=100.0,
-    limite=999.0)
+    limite=999.0
+    )
+
+
+conta_456 = Conta(
+    numero='123-2',
+    titular='Rafael',
+    saldo=199.5,
+    limite=1000
+    )
+
+
+conta_789 = Conta(
+    numero='123-3',
+    titular='Julia',
+    saldo=0,
+    limite=100
+    )
 
 
 def test_criar_conta():
@@ -45,3 +62,16 @@ def test_consultar():
 def test_conta_invalida():
     c = Conta()
     assert not c.titular
+
+
+def test_transferir_sucesso():
+    conta_123.transferir_para(conta_456, 45.6)
+    assert conta_123.saldo == 61.43 and conta_456.saldo == 245.1
+
+
+def test_transferir_valor_negativo():
+    assert not conta_123.transferir_para(conta_456, -100)
+
+
+def test_transferir_valor_com_saldo_zero():
+    assert not conta_789.transferir_para(conta_456, 15.9)
