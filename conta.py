@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from cliente import Cliente
 
 class Conta(object):
 
     def __init__(
         self,
         numero: str = None,
-        titular: str = None,
+        titular: object = None,
         saldo: float = 0.0,
         limite: float = 0.0
     ):
