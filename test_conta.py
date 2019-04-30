@@ -1,10 +1,32 @@
 # -*- coding: utf-8 -*-
 import pytest
 from conta import Conta
+from cliente import Cliente
+
+cliente_1 = Cliente(
+    nome='Manuela',
+    sobrenome='Evangelista',
+    cpf='12345678900'
+)
+
+
+cliente_2 = Cliente(
+    nome='Rafael',
+    sobrenome='Evangelista',
+    cpf='009876543211'
+)
+
+
+cliente_3 = Cliente(
+    nome='Julia',
+    sobrenome='Evanlista',
+    cpf='09856754312'
+)
+
 
 conta_123 = Conta(
     numero='123-1',
-    titular='Manuela',
+    titular=cliente_1,
     saldo=100.0,
     limite=999.0
     )
@@ -12,7 +34,7 @@ conta_123 = Conta(
 
 conta_456 = Conta(
     numero='123-2',
-    titular='Rafael',
+    titular=cliente_2,
     saldo=199.5,
     limite=1000
     )
@@ -20,7 +42,7 @@ conta_456 = Conta(
 
 conta_789 = Conta(
     numero='123-3',
-    titular='Julia',
+    titular=cliente_3,
     saldo=0,
     limite=100
     )
@@ -54,7 +76,7 @@ def test_sacar_valor_acima_do_saldo_e_limite():
 
 def test_consultar():
     extrato_conta = conta_123.extrato('123-1')
-    str_expected = 'Conta n° 123-1, títular Manuela,'\
+    str_expected = 'Conta n° 123-1, títular Manuela Evangelista,'\
         ' saldo: R$ 107.03 e limite de R$ 999.0'
     assert extrato_conta == str_expected
 

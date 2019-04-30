@@ -11,3 +11,6 @@ class Cliente(object):
         self.nome = nome
         self.sobrenome = sobrenome
         self.cpf = cpf
+
+    def __str__(self):
+        return "{} {}".format(self.nome, self.sobrenome)
